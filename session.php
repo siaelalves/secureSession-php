@@ -27,7 +27,7 @@ class session {
   
   $this->username = $username ;
   $this->password = $password ;
-  $this->id = $this->set_new_session_id ( ) ;
+  $this->id = $this->get_hash ( ) ;
 
  }
 
@@ -82,9 +82,11 @@ class session {
  /**
   * Inicializa uma nova sessão com um novo id baseado no usuário e senha especificados.
   */
- private function set_new_session_id ( ) : string {
+ public function create_session ( ) {
 
-  return hash ( "md5" , $this->username . $this->password ) ;
+  $_SESSION [ "id" ] = $this->id ;
+  $_SESSION [ "username" ] = $this->username ;
+  $_SESSION [ "password" ] = $this->password ;
 
  }
 
